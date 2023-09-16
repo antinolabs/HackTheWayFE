@@ -20,4 +20,14 @@ export const getAuctionDetails = async (params) => {
       };
     }
   };
+export const getAuctionCount = async (params) => {
+    try {
+      const { data } = await axiosInstance.get(`api/v1/auction/auction-count`);
+      return data;
+    } catch (e) {
+      return {
+        error: "Something went wrong",
+      };
+    }
+  };
   

@@ -88,7 +88,7 @@ const EstimatesPage = ({ active, setActive }) => {
 
   const match = useRef();
   const [loading, setLoading] = useState(false);
-  const currentPage = useRef(state.currentPage ?? 1);
+  const currentPage = useRef(state?.currentPage ?? 1);
   const dataPerPage = useRef(10);
   const [totalCount, setTotalCount] = useState();
   const [data, setData] = useState();
@@ -112,6 +112,7 @@ const EstimatesPage = ({ active, setActive }) => {
     }
     setLoading(false);
   };
+  
   useEffect(() => {
     getCompletedAuction();
   }, []);

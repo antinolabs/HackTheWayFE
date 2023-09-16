@@ -23,7 +23,6 @@ const RowComponent = ({ row, ind, dataPerPage, currentPage }) => {
       },
       { state: { currentPage, name: row } }
     );
-    // navigate(`/lawyer-request/${status}/${application}/${row?._id}`, {state: {name: row?.firstName}})
   };
   return (
     <>
@@ -59,7 +58,7 @@ const RowComponent = ({ row, ind, dataPerPage, currentPage }) => {
         </StyledTableCell>
 
         <StyledTableCell className="column-xl">
-          {row?.stacreatedAtrt ? extractDate(row?.createdAt) : "N/A"}
+          {row?.createdAt ? extractDate(row?.createdAt) : "N/A"}
         </StyledTableCell>
 
      
@@ -67,9 +66,9 @@ const RowComponent = ({ row, ind, dataPerPage, currentPage }) => {
           {row?.itemDescription?.initialPrice ? row?.itemDescription?.initialPrice : "N/A"}
         </StyledTableCell>
         
-        <StyledTableCell className="column-xl">
+        {/* <StyledTableCell className="column-xl">
           {row?.winningBid?.amount ? row?.winningBid?.amount : "N/A"}
-        </StyledTableCell>
+        </StyledTableCell> */}
 
       </StyledTableRow>
     </>

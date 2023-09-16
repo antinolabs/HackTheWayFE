@@ -104,10 +104,10 @@ export const LIVE_AUCTION_COLUMNS = [
       label: "Base Price",
       style: "column-xl",
     },
-    {
-      label: "Current Highest Bid",
-      style: "column-xl",
-    },
+    // {
+    //   label: "Current Highest Bid",
+    //   style: "column-xl",
+    // },
 
   ];
 

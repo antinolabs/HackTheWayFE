@@ -12,6 +12,7 @@ const CustomPagination = ({
   currentPage,
   match,
 }) => {
+
   let totalPages = Math.ceil(totalCount / dataPerPage.current);
 
   const rowOptions = ["10", "25", "50", "100"];
@@ -23,6 +24,7 @@ const CustomPagination = ({
   const filterKey = Object.keys(filterData);
   const filterValue = Object.values(filterData);
   const classes = useStyles();
+  
   //To get value in changing page number
   const getCurrentPage = (e) => {
     currentPage.current = e.target.outerText;
@@ -116,10 +118,11 @@ const CustomPagination = ({
               ))}
             </select>
           </Box>
+          {console.log(Number(currentPage?.current), totalCount)}
           <Stack spacing={2}>
             <Pagination
               count={totalPages}
-              page={Number(currentPage?.current??1)}
+              page={Number(currentPage?.current ?? 1)}
               shape="rounded"
               color="active"
               onChange={getCurrentPage}

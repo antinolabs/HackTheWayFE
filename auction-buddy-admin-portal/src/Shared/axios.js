@@ -6,6 +6,7 @@ export const axiosInstance = axios.create({
     headers: {
       "ngrok-skip-browser-warning": true,
       'Platform': 'admin', 
+     ' Access-Control-Allow-Origin': '*',
       Authorization: `Bearer ${adminInfoGetterService()}`
     },
 });
