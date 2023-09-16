@@ -22,7 +22,7 @@ const AuctionList = () => {
   const back = () => navigate(-1);
   const { state } = useLocation();
   const [allCount, setAllCount] = useState([{
-    "initialized": 0,
+    // "initialized": 0,
     "ongoing": 0,
     "completed": 0
   }
@@ -77,7 +77,7 @@ const AuctionList = () => {
 
             }}
           >
-            <Box
+            {/* <Box
               sx={{
                 background: "#fff",
                 p: { lg: "18px", md: "16x", xs: "14px", sm: "12px" },
@@ -123,7 +123,7 @@ const AuctionList = () => {
                   />
                 </Box>
               </Box>
-            </Box>
+            </Box> */}
             <Box
               sx={{
                 background: "#fff",
