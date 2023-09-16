@@ -35,7 +35,10 @@ const SearchBarField = ({
     return (
         <Box
             className="searchbar_wrapper"
-            sx={{ height: { sm: "30px", lg: "40px" }, width:'300px' }}
+            sx={{
+                height: { sm: "30px", lg: "40px" },
+                width: '300px',
+            }}
         >
             <input
                 className="font400"

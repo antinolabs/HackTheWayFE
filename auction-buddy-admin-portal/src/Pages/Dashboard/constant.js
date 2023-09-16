@@ -117,7 +117,7 @@ export const LIVE_AUCTION_COLUMNS = [
     LIVE_AUCTION_COLUMNS:LIVE_AUCTION_COLUMNS
   };
   export const TABS = {
-    UPCOMING: "Upcoming",
+    // UPCOMING: "Upcoming",
     LIVE: "Live",
     COMPLETED: "Completed",
   };

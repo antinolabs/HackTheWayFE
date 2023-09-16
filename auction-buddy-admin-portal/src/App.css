@@ -461,3 +461,16 @@ option.customOption {
   text-overflow: ellipsis;
   /* max-width: 170px !important; */
 }
+
+.searchbar_wrapper {
+  display: flex;
+  /* border: 2px solid #f5f5f5; */
+  border-radius: 4px;
+  padding: 4px 14px;
+  width: 32%;
+  max-width: 332px;
+  height: 40px;
+  justify-content: space-between;
+  align-items: center;
+  background-color:#F5F5F5;
+}

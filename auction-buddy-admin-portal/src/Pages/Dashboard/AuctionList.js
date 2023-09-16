@@ -32,7 +32,7 @@ const AuctionList = () => {
       case TABS.COMPLETED:
         return <CompletedAuction active={active} setActive={setActive} />;
       default:
-        return <UpcomingAuction active={active} setActive={setActive} />;
+        return <LiveAuction active={active} setActive={setActive} />;
     }
   };
 

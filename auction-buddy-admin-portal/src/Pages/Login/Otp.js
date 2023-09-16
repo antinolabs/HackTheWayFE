@@ -28,7 +28,6 @@ const Otp = () => {
 
     if (res.code === 200) {
       adminInfoStorageService(res.data.token);
-      console.log(res)
       const { userType, name } = res?.data?.user;
       window.localStorage.setItem(
         "AB-profile",
@@ -85,7 +84,7 @@ const Otp = () => {
       }}
     >
       <Box>
-        <Typography className="heading">Enter the OTP</Typography>
+        {/* <Typography className="heading">Enter the OTP</Typography> */}
         <Typography className="otp_headline" sx={{ color: "#565768" }}>
           Enter the OTP Received in your mobile number
         </Typography>

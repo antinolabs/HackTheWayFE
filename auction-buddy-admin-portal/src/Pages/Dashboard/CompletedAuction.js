@@ -6,7 +6,7 @@ import CustomTable from "../../Components/CustomTable";
 import { AuctionCloumn } from "./constant";
 import StyledTableCell from "../../Components/StyledTableCell";
 import StyledTableRow from "../../Components/StyledTableRow";
-import { extractDate } from "../../utils/date";
+import { extractDateTime } from "../../utils/date-time";
 import { createSearchParams } from "react-router-dom";
 import CustomPagination from "../../Components/CustomPagination";
 import SearchBarField from "../../Components/SearchBarField";
@@ -39,33 +39,44 @@ const RowComponent = ({ row, ind, dataPerPage, currentPage }) => {
             {dataPerPage * currentPage - dataPerPage + 1 + ind}
           </div>
         </StyledTableCell>
-        <StyledTableCell className="column_serial">
-          <p onClick={() => getDetail(row)} className="pointer tablename">
-            {row?.serialNo ? row?.serialNo : "N/A"}
-          </p>
+
+        <StyledTableCell className="column-large">
+          {/* <p
+                        className="pointer tablename"
+                        onClick={() => getDetail(row)}
+                    > */}
+          {row?.auctioneer?._id ? row?.auctioneer?._id: "N/A"}
+          {/* </p> */}
+
         </StyledTableCell>
 
-        <StyledTableCell className="column_one">
-          {row?.user?.name ? row?.user?.name : "N/A"}
+        <StyledTableCell className="column-large">
+          {row?.itemDescription?.itemName ? row?.itemDescription?.itemName  : "N/A"}
         </StyledTableCell>
 
-        <StyledTableCell className="column_one">
-          {row?.createdAt ? extractDate(row?.createdAt) : "N/A"}
+        <StyledTableCell className="column-xxl">
+          {row?.itemDescription?.itemInfo ? row?.itemDescription?.itemInfo : "N/A"}
         </StyledTableCell>
 
-        <StyledTableCell className="column_one" component="th" scope="row">
-          <div className="center_table_content">
-            {row?.state ? row?.state : "N/A"}
-          </div>
+        <StyledTableCell className="column-xl">
+          {row?.auctioneer?.name ? row?.auctioneer?.name : "N/A"}
         </StyledTableCell>
 
-        <StyledTableCell className="column_one">
-          {row?.district ? row?.district : "N/A"}
+        <StyledTableCell className="column-xl">
+          {row?.createdAt ? extractDateTime(row?.createdAt) : "N/A"}
+        </StyledTableCell>
+        <StyledTableCell className="column-xl">
+          {row?.endTime ? extractDateTime(row?.endTime) : "N/A"}
         </StyledTableCell>
 
-        <StyledTableCell className="column_one">
-          {row?.caseType ? row?.caseType : "N/A"}{" "}
+        <StyledTableCell className="column-xl">
+          {row?.itemDescription?.initialPrice ? row?.itemDescription?.initialPrice : "N/A"}
         </StyledTableCell>
+
+        <StyledTableCell className="column-xl">
+          {row?.winningBid?.amount ? row?.winningBid?.amount : "N/A"}
+        </StyledTableCell>
+
       </StyledTableRow>
     </>
   );
@@ -74,7 +85,6 @@ const RowComponent = ({ row, ind, dataPerPage, currentPage }) => {
 const EstimatesPage = ({ active, setActive }) => {
   const navigate = useNavigate();
   const { state } = useLocation();
-  console.log(state);
 
   const match = useRef();
   const [loading, setLoading] = useState(false);
@@ -87,16 +97,15 @@ const EstimatesPage = ({ active, setActive }) => {
     setLoading(true);
     param = {
       ...param,
+      status:'completed',
       page: currentPage.current,
       limit: dataPerPage.current,
-      premium: false,
-      stateUpdated: true,
     };
     try {
       const resp = await getAllAuctions(param);
       if (resp.code === 200) {
         setTotalCount(resp?.data[0]?.metadata[0]?.total);
-        setData(resp?.data[0]?.estimates);
+        setData(resp?.data?.auctions);
       }
     } catch (error) {
       console.log(error, "error");
@@ -152,7 +161,7 @@ const EstimatesPage = ({ active, setActive }) => {
           />
         </Box>
 
-      
+
         <CustomTable
           rows={data}
           isLoading={loading}

@@ -37,12 +37,12 @@ const RowComponent = ({ row, index, dataPerPage, currentPage }) => {
                 </StyledTableCell>
 
                 <StyledTableCell className="column-large">
-                    <p
+                    {/* <p
                         className="pointer tablename"
                         onClick={() => getDetail(row)}
-                    >
+                    > */}
                         {row?.auctionId ? row?.name : "N/A"}
-                    </p>
+                    {/* </p> */}
                 </StyledTableCell>
 
                 <StyledTableCell className="column-small">
@@ -58,15 +58,18 @@ const RowComponent = ({ row, index, dataPerPage, currentPage }) => {
                 </StyledTableCell>
 
                 <StyledTableCell className="column-xl">
-                    {row?.createdAt ? extractDate(row?.createdAt) : "N/A"}
+                    {row?.start ? extractDate(row?.createdAt) : "N/A"}
+                </StyledTableCell>
+                <StyledTableCell className="column-xl">
+                    {row?.end ? extractDate(row?.createdAt) : "N/A"}
                 </StyledTableCell>
 
                 <StyledTableCell className="column-xl">
-                    {row?.certificate ? row?.certificate : "N/A"}
+                    {row?.base ? row?.certificate : "N/A"}
                 </StyledTableCell>
                 
                 <StyledTableCell className="column-xl">
-                    {row?.certificate ? row?.certificate : "N/A"}
+                    {row?.highest ? row?.certificate : "N/A"}
                 </StyledTableCell>
 
             </StyledTableRow>

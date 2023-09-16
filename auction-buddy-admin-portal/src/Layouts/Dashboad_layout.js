@@ -57,7 +57,7 @@ const Dashboard_layout = () => {
         </Box>
         <Box className=" flexrow" sx={{ mr: "4.25%", columnGap: "14px" }}>
           <Box
-            className=" pointer flexrow"
+            className="  flexrow"
           >
             <Box sx={{ height: { sm: "36px", lg: "48px" } }}>
               <img src={AdminIcon} height="100%" alt="adminicon"></img>

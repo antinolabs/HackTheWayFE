@@ -21,7 +21,7 @@ const RowComponent = ({ row, ind, dataPerPage, currentPage }) => {
           id: row._id,
         }).toString(),
       },
-      { state: { currentPage, name: row?.name } }
+      { state: { currentPage, name: row } }
     );
     // navigate(`/lawyer-request/${status}/${application}/${row?._id}`, {state: {name: row?.firstName}})
   };
@@ -36,68 +36,41 @@ const RowComponent = ({ row, ind, dataPerPage, currentPage }) => {
             {dataPerPage * currentPage - dataPerPage + 1 + ind}
           </div>
         </StyledTableCell>
-        <StyledTableCell className="column_serial">
-          <p onClick={() => getDetail(row)} className="pointer tablename">
-            {row?.proposalNumber ? row?.proposalNumber : "N/A"}
-          </p>
+
+        <StyledTableCell className="column-large">
+          {/* <p
+                        className="pointer tablename"
+                        onClick={() => getDetail(row)}
+                    > */}
+          {row?.auctioneer?._id ? row?.auctioneer?._id : "N/A"}
+          {/* </p> */}
         </StyledTableCell>
 
-        <StyledTableCell className="column_one">
-          {row?.user?.name ? row?.user?.name : "N/A"}
+        <StyledTableCell className="column-large">
+          {row?.itemDescription?.itemName ? row?.itemDescription?.itemName  : "N/A"}
         </StyledTableCell>
 
-        <StyledTableCell className="column_one">
-          {row?.createdAt ? extractDate(row?.createdAt) : "N/A"}
+        <StyledTableCell className="column-xxl">
+          {row?.itemDescription?.itemInfo ? row?.itemDescription?.itemInfo : "N/A"}
         </StyledTableCell>
 
-        <StyledTableCell className="column_one" component="th" scope="row">
-          <div className="center_table_content">
-            {row?.lawyer ? row?.lawyer?.firstName : "N/A"}
-          </div>
+        <StyledTableCell className="column-xl">
+          {row?.auctioneer?.name ? row?.auctioneer?.name : "N/A"}
         </StyledTableCell>
 
-        <StyledTableCell className="column_one">
-          {row?.lawyer ? row?.lawyer?.highCourt?.toString() : "N/A"}
+        <StyledTableCell className="column-xl">
+          {row?.stacreatedAtrt ? extractDate(row?.createdAt) : "N/A"}
         </StyledTableCell>
 
-        <StyledTableCell className="column_one">
-          {row?.estimate ? row?.estimate?.caseType : "N/A"}{" "}
+     
+        <StyledTableCell className="column-xl">
+          {row?.itemDescription?.initialPrice ? row?.itemDescription?.initialPrice : "N/A"}
+        </StyledTableCell>
+        
+        <StyledTableCell className="column-xl">
+          {row?.winningBid?.amount ? row?.winningBid?.amount : "N/A"}
         </StyledTableCell>
 
-        <StyledTableCell className="column_serial">
-          <Box
-            display={"flex"}
-            justifyContent={"center"}
-            sx={{
-              color:
-                row?.status === "Accepted"
-                  ? "#019C6C"
-                  : row?.status === "Rejected"
-                  ? "#D12E29"
-                  : row?.status === "Review Proposal"
-                  ? "#FF8743"
-                  : "#2B84FF",
-            }}
-          >
-            <p
-              style={{
-                padding: "8px 12px",
-                // color: "#0BA700",
-                borderRadius: "8px",
-                backgroundColor:
-                  row?.status === "Accepted"
-                    ? "#DAFFDE"
-                    : row?.status === "Rejected"
-                    ? "#FFF2F2"
-                    : row.status === "Review Proposal"
-                    ? "#FFF4EE"
-                    : "#E8F4FB",
-              }}
-            >
-              {row?.status ? row?.status : "N/A"}
-            </p>
-          </Box>
-        </StyledTableCell>
       </StyledTableRow>
     </>
   );
@@ -109,7 +82,7 @@ const LiveAuction = ({ active, setActive }) => {
   const { state } = useLocation();
   const [loading, setLoading] = useState(false);
   const currentPage = useRef(
-    state?.active !== "Proposal" ? 1 : state?.currentPage
+    state?.active !== "Completed" ? 1 : state?.currentPage
   );
   const dataPerPage = useRef(10);
   const [totalCount, setTotalCount] = useState();
@@ -119,6 +92,7 @@ const LiveAuction = ({ active, setActive }) => {
     setLoading(true);
     param = {
       ...param,
+      status: 'ongoing',
       page: currentPage.current,
       limit: dataPerPage.current,
     };
@@ -126,7 +100,7 @@ const LiveAuction = ({ active, setActive }) => {
       const resp = await getAllAuctions(param);
       if (resp.code === 200) {
         setTotalCount(resp?.data[0]?.metadata[0]?.total);
-        setData(resp.data[0].proposals);
+        setData(resp?.data?.auctions);
       }
     } catch (error) {
       console.log(error, "error");
@@ -174,7 +148,7 @@ const LiveAuction = ({ active, setActive }) => {
             placeholder="Search By User Name"
           />
         </Box>
-      
+
         <CustomTable
           rows={data}
           isLoading={loading}
