@@ -15,6 +15,8 @@ import DashboardIcon from "../../assets/dashboard-active.svg";
 import { TABS } from "./constant";
 import { getAuctionCount } from "../../Shared/Services/DashboardServices"
 import gavel from "../../assets/gavel.svg";
+import Play from "../../assets/play.svg";
+import Close from "../../assets/close.svg"
 
 const AuctionList = () => {
   const navigate = useNavigate();
@@ -149,7 +151,7 @@ const AuctionList = () => {
                       lineHeight: "1.25",
                     }}
                   >
-                 Live Auctions
+                    Live Auctions
                   </Typography>
                   <Typography
                     className="font500"
@@ -161,13 +163,25 @@ const AuctionList = () => {
                     {i?.ongoing}
                   </Typography>
                 </Box>
-                <Box sx={{ height: { sm: "32px", md: "48px", lg: "64px" } }}>
+                <Box sx={{ height: { sm: "32px", md: "48px", lg: "64px" }, position:'relative' }}>
                   <img
                     alt="tab_icon"
                     width="100%"
                     height="100%"
                     src={gavel}
                   />
+                  <Box sx={{
+                    width: { sm: "8px", md: "12px", lg: "16px" },
+                    position: 'absolute',
+                    right: "-4%",
+                    bottom: "-13%",
+                    transform: "translate(-50%, -50%)"
+                  }}>
+                    <img
+                      width="100%"
+                      height="100%"
+                      src={Play} />
+                  </Box>
                 </Box>
               </Box>
             </Box>
@@ -208,13 +222,29 @@ const AuctionList = () => {
                     {i?.completed}
                   </Typography>
                 </Box>
-                <Box sx={{ height: { sm: "32px", md: "48px", lg: "64px" } }}>
+                <Box sx={{
+                  height: { sm: "32px", md: "48px", lg: "64px" },
+                  position: 'relative',
+
+                }}>
                   <img
                     alt="tab_icon"
                     width="100%"
                     height="100%"
                     src={gavel}
                   />
+                  <Box sx={{
+                    width: { sm: "8px", md: "12px", lg: "16px" },
+                    position: 'absolute',
+                    right: "-4%",
+                    bottom: "-13%",
+                    transform: "translate(-50%, -50%)"
+                  }}>
+                    <img
+                      width="100%"
+                      height="100%"
+                      src={Close} />
+                  </Box>
                 </Box>
               </Box>
 
