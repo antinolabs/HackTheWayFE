@@ -69,7 +69,7 @@ const AuctionList = () => {
       </Box>
       <Box sx={{ my: "36px" }}>
 
-        {allCount?.map((i) => (
+        {allCount?.map((i, ind) => (
           <Box
             sx={{
               display: "flex",
@@ -126,7 +126,7 @@ const AuctionList = () => {
                 </Box>
               </Box>
             </Box> */}
-            <Box
+            <Box key={ind}
               sx={{
                 background: "#fff",
                 p: { lg: "18px", md: "16x", xs: "14px", sm: "12px" },
@@ -185,7 +185,7 @@ const AuctionList = () => {
                 </Box>
               </Box>
             </Box>
-            <Box
+            <Box key={ind+1}
               sx={{
                 background: "#fff",
                 p: { lg: "18px", md: "16x", xs: "14px", sm: "12px" },

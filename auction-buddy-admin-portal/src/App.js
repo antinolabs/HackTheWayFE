@@ -19,7 +19,7 @@ const App = () => {
         main: "#7A7A7A",
       },
       active: {
-        main: "#FDECEC",
+        main: "#ECECEC",
       },
     },
     breakpoints: {

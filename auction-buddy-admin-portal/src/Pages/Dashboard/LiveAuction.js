@@ -98,7 +98,7 @@ const LiveAuction = ({ active, setActive }) => {
     try {
       const resp = await getAllAuctions(param);
       if (resp.code === 200) {
-        setTotalCount(resp?.data[0]?.metadata[0]?.total);
+        setTotalCount(resp?.data?.metadata[0]?.total);
         setData(resp?.data?.auctions);
       }
     } catch (error) {

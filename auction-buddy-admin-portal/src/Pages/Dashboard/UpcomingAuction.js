@@ -99,7 +99,7 @@ const RequestsPage = ({ active, setActive }) => {
       const resp = await getAllAuctions(param);
       if (resp.code === 200) {
         setTotalCount(resp?.data[0]?.metadata[0]?.total);
-        setData(resp?.data[0]?.estimates);
+        setData(resp?.data?.auctions);
       }
     } catch (error) {
       console.log(error, "error");

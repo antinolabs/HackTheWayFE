@@ -82,7 +82,7 @@ const RowComponent = ({ row, ind, dataPerPage, currentPage }) => {
   );
 };
 
-const EstimatesPage = ({ active, setActive }) => {
+const CompletedAuction = ({ active, setActive }) => {
   const navigate = useNavigate();
   const { state } = useLocation();
 
@@ -104,7 +104,7 @@ const EstimatesPage = ({ active, setActive }) => {
     try {
       const resp = await getAllAuctions(param);
       if (resp.code === 200) {
-        setTotalCount(resp?.data[0]?.metadata[0]?.total);
+        setTotalCount(resp?.data?.metadata[0]?.total);
         setData(resp?.data?.auctions);
       }
     } catch (error) {
@@ -186,4 +186,4 @@ const EstimatesPage = ({ active, setActive }) => {
   );
 };
 
-export default EstimatesPage;
+export default CompletedAuction;
