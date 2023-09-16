@@ -1,0 +1,10 @@
+.active-tab {
+    color: #0E0E0E;
+    border-bottom: 2px solid #0E0E0E;
+    cursor: pointer;
+  }
+  .unactive-tab {
+    cursor: pointer;
+    color: #7a7a7a;
+  }
+  
